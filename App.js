@@ -7,7 +7,7 @@ const App = () => {
     <View style={{ 
       flex: 1 
       }}>
-      <View style={{
+      <View style={{ 
       flex: 1, 
       flexDirection: 'row' }}>
       <View style={{
