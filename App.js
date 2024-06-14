@@ -6,14 +6,14 @@ const App = () => {
   return (
     <View style={{ 
       flex: 1,
-      justifyContent: 'space-between', 
-      alignItems: 'flext-start',
+      justifyContent: 'center', 
+      alignItems: 'center',
     }}>
       <View style={{
         width: 100,
         height: 100,
         backgroundColor: 'red',
-        alignSelf: 'flex-start',
+        alignSelf: 'center',
       }}>
         <Text>App</Text>
       </View>
@@ -21,7 +21,7 @@ const App = () => {
         width: 100,
         height: 100,
         backgroundColor: 'blue',
-        alignSelf: 'flex-end',
+        alignSelf: 'center',
       }}>
         <Text>App</Text>
       </View>
@@ -30,3 +30,6 @@ const App = () => {
 }
 
 export default App;
+
+//margin
+//padding
