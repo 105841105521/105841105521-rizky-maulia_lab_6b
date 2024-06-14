@@ -1,42 +1,32 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
+//flex-start dan flex-end dan center
 const App = () => {
   return (
-    // materi view
     <View style={{ 
-      flex: 1 
-      }}>
-      <View style={{ 
-      flex: 1, 
-      flexDirection: 'row' }}>
+      flex: 1,
+      justifyContent: 'space-between', 
+      alignItems: 'flext-start',
+    }}>
       <View style={{
-      flex: 1, 
-      backgroundColor: 'red' 
+        width: 100,
+        height: 100,
+        backgroundColor: 'red',
+        alignSelf: 'flex-start',
       }}>
+        <Text>App</Text>
       </View>
-      <View style={{ 
-      flex: 1, 
-      backgroundColor: 'blue' 
+      <View style={{
+        width: 100,
+        height: 100,
+        backgroundColor: 'blue',
+        alignSelf: 'flex-end',
       }}>
+        <Text>App</Text>
       </View>
-      </View>
-      <View style={{ 
-      flex: 1, 
-      backgroundColor: 'yellow' 
-      }}>
-      </View>
-      <View style={{ 
-      flex: 1, 
-      backgroundColor: 'green' 
-      }}>
-      </View>
-      <Text style={styles.text}>App</Text>
     </View>
   );
-};
+}
 
 export default App;
-
-const styles = StyleSheet.create({
-});
