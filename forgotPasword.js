@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font'; 
 
-// Komponen kustom, ButtonCustom
 const ButtonCustom = ({ text, color, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
@@ -11,7 +10,6 @@ const ButtonCustom = ({ text, color, onPress }) => {
   );
 };
 
-// Komponen kustom, TextInputCustom
 const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) => {
   return (
     <TextInput
@@ -33,7 +31,7 @@ export default function forgotPasword() {
   });
 
   if (!dapatFont) {
-    return <Text></Text>; 
+    return <Text>tidak ditemukan...</Text>; 
   }
 
   return (

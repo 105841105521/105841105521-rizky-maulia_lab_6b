@@ -10,7 +10,7 @@ const ButtonCustom = ({ text, color, onPress }) => {
     </TouchableOpacity>
   );
 };
-
+ 
 // Komponen kustom, TextInputCustom
 const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) => {
   return (
