@@ -33,7 +33,7 @@ export default function forgotPasword() {
   });
 
   if (!dapatFont) {
-    return <Text>tidak ditemukan...</Text>; 
+    return <Text></Text>; 
   }
 
   return (
