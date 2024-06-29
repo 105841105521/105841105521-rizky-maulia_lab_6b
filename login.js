@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { useFonts } from 'expo-font'; 
 
 // Komponen kustom, ButtonCustom
 const ButtonCustom = ({ text, color, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text> 
     </TouchableOpacity>
   );
 };
@@ -17,20 +18,32 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) 
       keyboardType={typeKeyboard}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
-      style={[styles.textInput, { borderColor: color }]}
+      style={[styles.textInput, { borderColor: color, fontFamily: 'Metro-Medium' }]} 
     />
   );
 };
 
-export default function Login() {
+export default function login() {
+  const [dapatFont] = useFonts({
+    'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
+    'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+    'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
+    'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+    'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
+  });
+
+  if (!dapatFont) { 
+    return <Text>tidak ditemukan...</Text>;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Login</Text> 
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
-      <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+      <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>Forgot your password?</Text> 
       <ButtonCustom text="LOGIN" color="red" onPress={() => {}} />
-      <Text style={styles.orText}>Or login with social account</Text>
+      <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or login with social account</Text> 
       <View style={styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Image source={require('./assets/google.jpeg')} style={styles.socialIcon} />
@@ -52,7 +65,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
     marginBottom: 20,
   },
   textInput: {

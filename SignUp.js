@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { useFonts } from 'expo-font';
 
 // Komponen kustom, ButtonCustom
 const ButtonCustom = ({ text, color, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -17,21 +18,33 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) 
       keyboardType={typeKeyboard}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
-      style={[styles.textInput, { borderColor: color }]}
+      style={[styles.textInput, { borderColor: color, fontFamily: 'Metro-Medium' }]}
     />
   );
 };
 
 export default function SignUp() {
+  const [dapatFont] = useFonts({
+    'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
+    'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+    'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
+    'Metro-SemiBold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+    'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
+  });
+
+  if (!dapatFont) {
+    return <Text>tidak ditemukan...</Text>;
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign up</Text>
+      <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Sign up</Text>
       <TextInputCustom placeholder="Name" color="gray" typeKeyboard="default" />
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
       <ButtonCustom text="SIGN UP" color="red" onPress={() => {}} />
-      <Text style={styles.signInText}>Already have an account?</Text>
-      <Text style={styles.orText}>Or sign up with social account</Text>
+      <Text style={[styles.signInText, { fontFamily: 'Metro-Medium' }]}>Already have an account?</Text>
+      <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or sign up with social account</Text>
       <View style={styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Image source={require('./assets/google.jpeg')} style={styles.socialIcon} />
@@ -50,10 +63,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+    padding: 20,
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
     marginBottom: 20,
   },
   textInput: {
@@ -75,7 +88,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Metro-Medium',
   },
   signInText: {
     fontSize: 16,
