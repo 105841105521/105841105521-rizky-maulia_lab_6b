@@ -44,7 +44,7 @@ export default function forgotPaswordPage({navigation}) {
       <Text style={[styles.errorText, { fontFamily: 'Metro-Medium' }]}>
         Not a valid email address. Should be your@email.com
       </Text>
-      <ButtonCustom text="SEND" color="red" onPress={() => navigation.navigate('ForgotPasword')} />
+      <ButtonCustom text="SEND" color="red" onPress={() => navigation.navigate('SignUp')} />
     </View>
   );
 }

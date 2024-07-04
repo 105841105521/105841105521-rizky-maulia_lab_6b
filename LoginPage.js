@@ -39,8 +39,10 @@ export default function LoginPage({navigation}) {
       <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Login</Text> 
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
-      <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>Forgot your password?</Text> 
-      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('SignUp')}  />
+      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgotPasword')}  />
+      <TouchableOpacity onPress={() => navigation.navigate('ForgotPasword')}>
+      <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>ForgotPasword?</Text> 
+      </TouchableOpacity>
       <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or login with social account</Text> 
       <View style={styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
@@ -75,9 +77,10 @@ const styles = StyleSheet.create({
   },
   forgotPasswordText: {
     alignSelf: 'flex-center',
-    marginRight: 30,
+    marginRight: 5,
     marginBottom: 20,
     color: 'gray',
+    fontSize: 19,
   },
   button: {
     width: 300,

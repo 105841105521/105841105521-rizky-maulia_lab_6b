@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native';
+
 
 const ButtonCustom = ({ text, color, onPress }) => {
   return (
@@ -33,6 +35,7 @@ export default function SignUpPage({navigation}) {
   if (!dapatFont) {
     return <Text>tidak ditemukan...</Text>;
   }
+  
 
   return (
     <View style={styles.container}>
@@ -40,8 +43,10 @@ export default function SignUpPage({navigation}) {
       <TextInputCustom placeholder="Name" color="gray" typeKeyboard="default" />
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
-      <ButtonCustom text="SIGN UP" color="red" onPress={() => navigation.navigate('ForgotPasword')} />
-      <Text style={[styles.signInText, { fontFamily: 'Metro-Medium' }]}>Already have an account?</Text>
+      <ButtonCustom text="SIGN UP" color="red" onPress={() => navigation.navigate('Login')} />
+      <TouchableOpacity onPress={() => (navigation.navigate('Login'))}>
+        <Text style={[styles.signInText, { fontFamily: 'Metro-Medium' }]}>Already have an account?</Text> 
+      </TouchableOpacity>
       <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or sign up with social account</Text>
       <View style={styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
