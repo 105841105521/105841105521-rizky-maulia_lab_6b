@@ -21,7 +21,7 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) 
   );
 };
 
-export default function forgotPasword() {
+export default function forgotPaswordPage({navigation}) {
   const [dapatFont] = useFonts({
     'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
     'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
@@ -44,7 +44,7 @@ export default function forgotPasword() {
       <Text style={[styles.errorText, { fontFamily: 'Metro-Medium' }]}>
         Not a valid email address. Should be your@email.com
       </Text>
-      <ButtonCustom text="SEND" color="red" onPress={() => {}} />
+      <ButtonCustom text="SEND" color="red" onPress={() => navigation.navigate('ForgotPasword')} />
     </View>
   );
 }
