@@ -1,27 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
-import { useFonts } from 'expo-font'; 
+import { useFonts } from 'expo-font';
 
 const ButtonCustom = ({ text, color, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
-      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text> 
+      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text>
     </TouchableOpacity>
   );
 };
- 
+
 const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) => {
   return (
     <TextInput
       keyboardType={typeKeyboard}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
-      style={[styles.textInput, { borderColor: color, fontFamily: 'Metro-Medium' }]} 
+      style={[styles.textInput, { borderColor: color, fontFamily: 'Metro-Medium' }]}
     />
   );
 };
 
-export default function LoginPage({navigation}) {
+export default function LoginPage({ navigation }) {
   const [dapatFont] = useFonts({
     'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
     'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
@@ -30,20 +30,20 @@ export default function LoginPage({navigation}) {
     'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
   });
 
-  if (!dapatFont) { 
+  if (!dapatFont) {
     return <Text>tidak ditemukan...</Text>;
   }
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Login</Text> 
+      <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Login</Text>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
-      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgotPasword')}  />
+      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgotPasword')} />
       <TouchableOpacity onPress={() => navigation.navigate('ForgotPasword')}>
-      <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>ForgotPasword?</Text> 
+        <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>ForgotPasword?</Text>
       </TouchableOpacity>
-      <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or login with social account</Text> 
+      <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or login with social account</Text>
       <View style={styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Image source={require('./assets/google.jpeg')} style={styles.socialIcon} />
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   forgotPasswordText: {
-    alignSelf: 'flex-center',
+    alignSelf: 'center',
     marginRight: 5,
     marginBottom: 20,
     color: 'gray',
