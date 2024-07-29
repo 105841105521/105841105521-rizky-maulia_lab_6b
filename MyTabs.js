@@ -1,16 +1,13 @@
+
 import React from 'react';
 import { Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';
 import BagScreen from './bagScreen';
 import ShopScreen from './ShopScreen';
 import ProfileScreen from './ProfileScreen';
-import LoginPage from './LoginPage'; 
-import FavoriteScreen from './favoriteScreen';
 
-const Stack = createNativeStackNavigator();
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -44,7 +41,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Favorit"
-        component={FavoriteScreen}
+        component={ProfileScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -85,15 +82,4 @@ function MyTabs() {
   );
 }
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Beranda" component={MyTabs} options={{ headerShown: false }} />
-        <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default App;
+export default MyTabs;

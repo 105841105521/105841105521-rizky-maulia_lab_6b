@@ -1,14 +1,7 @@
+// LoginPage.js
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native';
 import { useFonts } from 'expo-font';
-
-const ButtonCustom = ({ text, color, onPress }) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
-      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text>
-    </TouchableOpacity>
-  );
-};
 
 const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) => {
   return (
@@ -21,8 +14,16 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry }) 
   );
 };
 
-export default function LoginPage({ navigation }) {
-  const [dapatFont] = useFonts({
+const ButtonCustom = ({ text, color, onPress }) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
+      <Text style={[styles.buttonText, { fontFamily: 'Metro-Medium' }]}>{text}</Text>
+    </TouchableOpacity>
+  );
+};
+
+function LoginPage({ navigation }) {
+  const [fontsLoaded] = useFonts({
     'Metro-Black': require('./assets/fonts/Metropolis-Black.otf'),
     'Metro-Bold': require('./assets/fonts/Metropolis-Bold.otf'),
     'Metro-Light': require('./assets/fonts/Metropolis-Light.otf'),
@@ -30,8 +31,8 @@ export default function LoginPage({ navigation }) {
     'Metro-Medium': require('./assets/fonts/Metropolis-Medium.otf'),
   });
 
-  if (!dapatFont) {
-    return <Text>tidak ditemukan...</Text>;
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
   }
 
   return (
@@ -39,9 +40,9 @@ export default function LoginPage({ navigation }) {
       <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}>Login</Text>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address" />
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true} />
-      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgotPasword')} />
-      <TouchableOpacity onPress={() => navigation.navigate('ForgotPasword')}>
-        <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>ForgotPasword?</Text>
+      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('Main')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+        <Text style={[styles.forgotPasswordText, { fontFamily: 'Metro-Medium' }]}>ForgotPassword?</Text>
       </TouchableOpacity>
       <Text style={[styles.orText, { fontFamily: 'Metro-Medium' }]}>Or login with social account</Text>
       <View style={styles.socialContainer}>
@@ -59,41 +60,36 @@ export default function LoginPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
   },
   title: {
-    fontSize: 30,
+    fontSize: 32,
     marginBottom: 20,
   },
   textInput: {
-    width: 300,
-    height: 50,
+    height: 40,
+    borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 15,
-    paddingLeft: 10,
-  },
-  forgotPasswordText: {
-    alignSelf: 'center',
-    marginRight: 5,
     marginBottom: 20,
-    color: 'gray',
-    fontSize: 19,
+    paddingHorizontal: 10,
+    width: '100%',
   },
   button: {
-    width: 300,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: 'center',
+    padding: 10,
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 20,
+    width: '100%',
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'bold',
+  },
+  forgotPasswordText: {
+    fontSize: 16,
+    color: 'gray',
+    marginBottom: 20,
   },
   orText: {
     fontSize: 16,
@@ -102,8 +98,6 @@ const styles = StyleSheet.create({
   },
   socialContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: 150,
   },
   socialIcon: {
     width: 50,
@@ -111,3 +105,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
 });
+
+export default LoginPage;
